@@ -1,6 +1,6 @@
 # Caso “Club Videojuegos”
 
-¡¡en proceso de modificaciones!! por lo que los pasos para ejecutar el proyecto podrian variar y no ser los mismo indicados...
+¡¡en proceso de modificacion!! por lo que los pasos para ejecutar el proyecto podrian variar y no ser los mismo indicados...
 
 
 Creado por Lilyana Orellana Saavedra para certificación fullstack python
