@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ 
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Devolver: {{ juego.titulo }}</title>
+</head>
+<body>
+    <h2>Retornar: {{ juego.titulo }}</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        <label for="fecha_retorno">Seleccione Fecha de Retorno</label>
+        <input type="date" id="fecha_retorno" name="fecha_retorno" required>
+        
+        <button type="submit">Retornar</button>
+    </form>
+</body>
+</html>
+
+
+{% endblock %}

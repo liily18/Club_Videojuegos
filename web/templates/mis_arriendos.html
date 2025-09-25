@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ 
+<div class="container mt-5">
+        <table class="table table-bordered table-striped table-success">
+          <thead>
+            <tr>
+              <th scope="col">
+                <div class="text-center">Titulo</div>
+                
+              </th>
+              <th scope="col">
+                <div class="text-center">Plataforma</div>
+                
+              </th>
+              <th scope="col">
+                <div class="text-center">Fecha Arriendo</div>
+              </th>
+              <th scope="col">
+                <div class="text-center">Fecha Devolución</div>
+              </th>
+              
+         
+              <th scope="col">
+                <div class="text-center"></div>
+              </th>
+         
+            </tr>
+          </thead>
+          <tbody>
+            {% for data in juegos_data %}
+            <tr>
+                <td>{{ data.nombre }}</td>
+                <td>{{ data.plataforma }}</td>
+                <td>{{ data.fecha_arriendo }}</td>
+                <td>{{ data.fecha_devolucion }}</td>
+                <td>
+                    <a href="{% url 'devolver' data.id %}" class="btn btn-info">Retornar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+      
+      </div>
+    </div>
+   
+{% endblock %}

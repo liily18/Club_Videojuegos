@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center">Arriendos</h2>
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr style="background-color: #a3d16d;">
+                <th>Juego</th>
+                <th>Fecha</th>
+                <th>Cliente</th>
+                <th>Nota</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for arriendo in arriendos %}
+            <tr>
+                <td>{{ arriendo.juego.titulo }}</td>
+                <td>{{ arriendo.fecha_arriendo }}</td>
+                <td>{{ arriendo.user.get_full_name }}</td>
+                <td>
+                    <form method="post" action="{% url 'agregar_observacion' arriendo.id %}">
+                        {% csrf_token %}
+                        <input type="text" name="observacion" class="form-control" placeholder="nota..." value="{{ arriendo.observacion }}" />
+                </td>
+                <td>
+                        <button type="submit" class="btn btn-primary">Comentar</button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No hay juegos arrendados actualmente.</td>
+            </tr>
+                
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Sección de Resumen de Multas -->
+    <h2 class="text-center mt-4">Resumen de Multas Generadas</h2>
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr style="background-color: #f8d7da;">
+                <th>Juego</th>
+                <th>Fecha de Devolución</th>
+                <th>Monto</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for multa in multas %}
+            <tr>
+                <td>{{ multa.juego }}</td>
+                <td>{{ multa.fecha_devolucion }}</td>
+                <td>${{ multa.monto }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">No hay multas registradas.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}
+
